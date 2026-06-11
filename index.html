@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Campo della Vita — Comunità Cenacolo</title>
+<meta name="description" content="Campo della Vita — Siamo vivi grazie all'amore. Non sono semplici storie, è vita che diventa speranza." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --rosso:#9a2228;
+  --rosso-scuro:#6e161b;
+  --rosso-chiaro:#c0363d;
+  --crema:#f7f3ec;
+  --crema-2:#efe8db;
+  --inchiostro:#241c1a;
+  --grigio:#6f6660;
+  --oro:#b8893f;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--inchiostro);background:var(--crema);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1200px,92%);margin-inline:auto}
+section{position:relative}
+
+/* ---------- HEADER / NAV ---------- */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:22px 0;transition:.4s ease;}
+.nav.scrolled{background:rgba(247,243,236,.96);box-shadow:0 6px 30px rgba(0,0,0,.08);padding:14px 0;backdrop-filter:blur(6px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav .logo img{height:54px;transition:.4s}
+.nav.scrolled .logo img{height:44px}
+.nav .logo .l-white{display:block}
+.nav .logo .l-red{display:none}
+.nav.scrolled .logo .l-white{display:none}
+.nav.scrolled .logo .l-red{display:block}
+.menu{display:flex;gap:34px;align-items:center;list-style:none}
+.menu a{font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#fff;position:relative;padding:4px 0;transition:.3s}
+.menu a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rosso-chiaro);transition:.3s}
+.menu a:hover::after{width:100%}
+.nav.scrolled .menu a{color:var(--inchiostro)}
+.btn-nav{background:var(--rosso);color:#fff!important;padding:11px 24px;border-radius:40px;letter-spacing:.1em;transition:.3s}
+.btn-nav:hover{background:var(--rosso-scuro);transform:translateY(-2px)}
+.btn-nav::after{display:none!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0}
+.burger span{width:26px;height:2px;background:#fff;transition:.3s}
+.nav.scrolled .burger span{background:var(--inchiostro)}
+
+/* ---------- HERO ---------- */
+.hero{height:100vh;min-height:620px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;z-index:-2}
+.hero-video iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.77vh;transform:translate(-50%,-50%) scale(1.4);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,28,26,.55),rgba(110,22,27,.45) 60%,rgba(36,28,26,.75));z-index:-1}
+.hero-inner{max-width:920px;padding:0 20px;animation:fadeUp 1.4s ease both}
+.hero .kick{font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;opacity:.85;margin-bottom:26px}
+.hero h1{font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(2.2rem,5.2vw,4.4rem);line-height:1.12;text-shadow:0 4px 40px rgba(0,0,0,.4)}
+.hero h1 b{font-style:normal;font-weight:700}
+.scrolldown{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;opacity:.8;display:flex;flex-direction:column;align-items:center;gap:10px;z-index:2}
+.scrolldown .line{width:1px;height:46px;background:rgba(255,255,255,.7);animation:pulse 1.8s ease-in-out infinite}
+
+/* ---------- SECTION TITLES ---------- */
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rosso);font-weight:600;margin-bottom:16px}
+.sec-title{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;letter-spacing:-.01em}
+.sec-title .it{font-style:italic;color:var(--rosso)}
+.lead{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--grigio);max-width:760px}
+
+/* ---------- INTRO / PILLARS ---------- */
+.intro{padding:130px 0 90px;text-align:center}
+.intro .lead{margin:18px auto 0}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:70px}
+.pillar{background:#fff;border:1px solid var(--crema-2);border-radius:18px;padding:46px 32px;text-align:center;transition:.4s;box-shadow:0 10px 40px rgba(110,22,27,.04)}
+.pillar:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(110,22,27,.12);border-color:transparent}
+.pillar .ic{width:74px;height:74px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;background:var(--crema);border-radius:50%}
+.pillar .ic img{width:42px;height:42px;object-fit:contain}
+.pillar h3{font-family:var(--serif);font-size:1.7rem;font-weight:600;margin-bottom:10px}
+.pillar p{color:var(--grigio);font-size:.96rem}
+
+/* ---------- ALIVE BANNER ---------- */
+.alive{background:var(--rosso);color:#fff;text-align:center;padding:90px 0;overflow:hidden}
+.alive .big{font-family:var(--serif);font-style:italic;font-size:clamp(.9rem,1.4vw,1.1rem);letter-spacing:.5em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+.alive h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,5vw,4rem);line-height:1.1}
+.alive p{font-family:var(--serif);font-style:italic;font-size:1.5rem;margin-top:20px;opacity:.92}
+
+/* ---------- MADRE ELVIRA ---------- */
+.elvira{padding:110px 0}
+.elvira .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.elvira .photo{position:relative}
+.elvira .photo img{border-radius:20px;width:100%;box-shadow:0 30px 70px rgba(36,28,26,.22)}
+.elvira .photo::before{content:'';position:absolute;inset:-18px -18px auto auto;width:60%;height:60%;border:2px solid var(--rosso-chiaro);border-radius:20px;z-index:-1;top:-18px;right:-18px}
+.elvira blockquote{font-family:var(--serif);font-size:clamp(1.6rem,2.6vw,2.3rem);font-style:italic;line-height:1.4;color:var(--inchiostro)}
+.elvira blockquote .mark{color:var(--rosso);font-size:3rem;line-height:0;vertical-align:-.4em;margin-right:6px}
+.elvira cite{display:block;margin-top:26px;font-style:normal;font-family:var(--sans);font-weight:600;letter-spacing:.04em}
+.elvira cite small{display:block;color:var(--grigio);font-weight:400;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;margin-top:4px}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--inchiostro);color:#fff;padding:90px 0;background-image:radial-gradient(circle at 20% 20%,rgba(154,34,40,.4),transparent 50%)}
+.stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.stat .num{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,6vw,5rem);color:#fff;line-height:1}
+.stat .num span{color:var(--rosso-chiaro)}
+.stat .lab{margin-top:14px;font-size:.92rem;letter-spacing:.04em;color:rgba(255,255,255,.72);max-width:280px;margin-inline:auto}
+.stat:nth-child(3) .num{font-size:clamp(2rem,3.4vw,2.6rem);font-style:italic}
+
+/* ---------- PROVVIDENZA / WORK ---------- */
+.work{padding:115px 0}
+.work .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:54px}
+.work .head p{color:var(--grigio);max-width:440px;font-size:1.02rem}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/2.05;box-shadow:0 16px 40px rgba(36,28,26,.1)}
+.card img{width:100%;height:100%;object-fit:cover;transition:.7s}
+.card:hover img{transform:scale(1.07)}
+.card .cap{position:absolute;inset:auto 0 0 0;padding:26px 24px;background:linear-gradient(180deg,transparent,rgba(36,28,26,.85));color:#fff}
+.card .cap h4{font-family:var(--serif);font-size:1.5rem;font-weight:600}
+.card .cap span{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi{background:var(--crema-2);padding:110px 0}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.tcard{background:#fff;border-radius:18px;padding:38px 34px;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(36,28,26,.06)}
+.tcard .quote{color:var(--rosso);font-family:var(--serif);font-size:3.4rem;line-height:.4;height:30px}
+.tcard p{font-style:italic;font-family:var(--serif);font-size:1.22rem;color:var(--inchiostro);flex:1;margin:14px 0 26px}
+.tcard .who{display:flex;align-items:center;gap:14px}
+.tcard .who img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.tcard .who b{font-size:.98rem}
+.tcard .who small{display:block;color:var(--grigio);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem}
+
+/* ---------- STORIE (home) ---------- */
+.stories{padding:115px 0}
+.stories .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:54px}
+.stories .head p{color:var(--grigio);max-width:420px;font-size:1.02rem}
+.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.story-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(36,28,26,.07);transition:.4s;display:block}
+.story-card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(110,22,27,.15)}
+.story-card .ph{position:relative;aspect-ratio:4/3;overflow:hidden}
+.story-card .ph img{width:100%;height:100%;object-fit:cover;transition:.7s}
+.story-card:hover .ph img{transform:scale(1.08)}
+.story-card .ph .age{position:absolute;top:16px;left:16px;background:var(--rosso);color:#fff;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:30px;font-weight:600}
+.story-card .bd{padding:28px 28px 32px}
+.story-card .bd h3{font-family:var(--serif);font-size:1.9rem;font-weight:600;margin-bottom:8px}
+.story-card .bd p{color:var(--grigio);font-family:var(--serif);font-style:italic;font-size:1.18rem;line-height:1.4;margin-bottom:18px}
+.story-card .bd .more{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rosso);font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:.3s}
+.story-card:hover .bd .more{gap:14px}
+
+/* ---------- MARQUEE ---------- */
+.marquee{width:100%;overflow:hidden;white-space:nowrap;padding:10px 0 50px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:inline-flex;align-items:center;will-change:transform;animation:marquee 26s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:var(--serif);font-weight:600;font-size:clamp(2.8rem,9vw,7.5rem);line-height:1.05;color:var(--rosso);padding-right:.35em;letter-spacing:-.01em}
+.marquee-track span i{font-style:italic;color:var(--inchiostro)}
+.marquee-track span b{color:var(--rosso-chiaro);font-weight:400;margin-left:.3em}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- CTA ---------- */
+.cta{padding:0}
+.cta .grid{display:grid;grid-template-columns:1fr 1fr}
+.cta .panel{padding:90px 8%;text-align:center;color:#fff;transition:.4s}
+.cta .one{background:var(--rosso-scuro)}
+.cta .two{background:var(--rosso)}
+.cta .panel:hover{padding-bottom:100px;padding-top:80px}
+.cta .panel h3{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;margin-bottom:22px}
+.cta .panel p{opacity:.9;max-width:420px;margin:0 auto 30px}
+.btn-light{display:inline-block;background:#fff;color:var(--rosso)!important;padding:14px 36px;border-radius:40px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;transition:.3s}
+.btn-light:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.25)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--inchiostro);color:rgba(255,255,255,.72);padding:80px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:44px}
+.foot-grid img.flogo{height:74px;margin-bottom:22px}
+footer h5{color:#fff;font-family:var(--serif);font-size:1.3rem;margin-bottom:18px;font-weight:600}
+footer ul{list-style:none}
+footer li{margin-bottom:11px}
+footer a:hover{color:#fff}
+footer .col p{font-size:.95rem;margin-bottom:10px}
+.socials{display:flex;gap:14px;margin-top:18px}
+.socials a{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:.3s}
+.socials a:hover{background:var(--rosso)}
+.socials img{width:20px;height:20px;object-fit:contain}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:56px;padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.82rem}
+.foot-words{display:flex;gap:18px;flex-wrap:wrap;color:rgba(255,255,255,.5);letter-spacing:.14em;text-transform:uppercase;font-size:.7rem}
+
+/* ---------- ANIM ---------- */
+.reveal{opacity:0;transform:translateY(40px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .menu{position:fixed;inset:0 0 0 auto;width:min(320px,80%);background:var(--rosso-scuro);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:.4s;padding:40px}
+  .menu.open{transform:none}
+  .menu a{color:#fff!important;font-size:1rem}
+  .burger{display:flex;z-index:101}
+  .pillars,.gallery,.testi-grid,.stats .grid,.stories-grid{grid-template-columns:1fr}
+  .stories .head{flex-direction:column;align-items:flex-start}
+  .elvira .grid{grid-template-columns:1fr;gap:40px}
+  .elvira .photo{max-width:440px;margin:0 auto}
+  .cta .grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media(max-width:560px){
+  .foot-grid{grid-template-columns:1fr}
+  .work .head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <img class="l-white" src="https://www.campodellavita.com/wp-content/uploads/2025/02/LOGO-HEADER-BIANCO-WEB-e1779092010488.png" alt="Campo della Vita" />
+      <img class="l-red" src="https://www.campodellavita.com/wp-content/uploads/2025/02/LOGO-HEADER-ROSSO-WEB-e1779088622341.png" alt="Campo della Vita" />
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#missione">Missione</a></li>
+      <li><a href="#elvira">Madre Elvira</a></li>
+      <li><a href="#provvidenza">Provvidenza</a></li>
+      <li><a href="#storie">Storie</a></li>
+      <li><a href="#aiutaci" class="btn-nav">Contattaci</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-video">
+    <iframe src="https://www.youtube.com/embed/NdUyCFnhb6g?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=NdUyCFnhb6g&playsinline=1&modestbranding=1" title="Campo della Vita" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="hero-inner">
+    <p class="kick">Comunità Cenacolo · Campo della Vita</p>
+    <h1>"…mi sono rimboccata le maniche per <b>amare, amare, amare</b>.. e servire!"</h1>
+  </div>
+  <div class="scrolldown"><span class="line"></span>Scorri verso il basso</div>
+</header>
+
+<!-- INTRO / PILLARS -->
+<section class="intro reveal" id="missione">
+  <div class="wrap">
+    <span class="eyebrow">Chi siamo</span>
+    <h2 class="sec-title">Non sono semplici storie,<br><span class="it">è vita che diventa speranza.</span></h2>
+    <p class="lead">Ragazzi e ragazze, consacrati e famiglie: una sola chiamata ad amare e a servire, ogni giorno, partendo dalle piccole cose.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="ic"><img src="https://www.campodellavita.com/wp-content/uploads/2025/03/icon2-home-1.png" alt=""></div>
+        <h3>Ragazzi e ragazze</h3>
+        <p>La riscoperta del lavoro vissuto come dono e impegno per maturare nelle responsabilità della vita.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><img src="https://www.campodellavita.com/wp-content/uploads/2026/05/CONSACRATI-1-e1778587185350.png" alt=""></div>
+        <h3>Consacrati</h3>
+        <p>Una vita donata nella preghiera e nel servizio, per essere presenza viva di amore accanto a chi soffre.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><img src="https://www.campodellavita.com/wp-content/uploads/2026/05/famiglie-1.0-64x64.png" alt=""></div>
+        <h3>Famiglie</h3>
+        <p>Il donare, il condividere, il partire e lasciare le proprie terre diventa gioia vera e profonda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIVE BANNER -->
+<section class="alive">
+  <div class="wrap reveal">
+    <p class="big">Alive</p>
+    <h2>Siamo vivi grazie all'amore</h2>
+    <p>ti raccontiamo… ascolta.</p>
+  </div>
+</section>
+
+<!-- MADRE ELVIRA -->
+<section class="elvira" id="elvira">
+  <div class="wrap">
+    <div class="grid reveal">
+      <div class="photo">
+        <img src="https://www.campodellavita.com/wp-content/uploads/2026/04/madre-elvira-ok.jpg" alt="Madre Elvira" />
+      </div>
+      <div>
+        <span class="eyebrow">La nostra origine</span>
+        <blockquote><span class="mark">"</span>…non è stata sicuramente una mia idea. Ciò che sta accadendo, la storia che stiamo vivendo, non poteva nascere dalle idee o dalle intuizioni di una povera donna come me.</blockquote>
+        <cite>Madre Elvira<small>Fondatrice · Comunità Cenacolo</small></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid reveal">
+      <div class="stat"><div class="num"><span data-count="8">0</span> mld</div><div class="lab">preghiere ascoltate dal Signore</div></div>
+      <div class="stat"><div class="num"><span data-count="19">0</span></div><div class="lab">paesi in cui siamo presenti nel mondo</div></div>
+      <div class="stat"><div class="num">Amare</div><div class="lab">Siamo chiamati ad amare, non a salvare: il Signore salva.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVVIDENZA / WORK -->
+<section class="work" id="provvidenza">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">La Provvidenza</span>
+        <h2 class="sec-title">La prima provvidenza<br><span class="it">sono le nostre mani.</span></h2>
+      </div>
+      <p>"Il primo mestiere che i giovani devono imparare è quello di vivere." Il lavoro, la terra e la condivisione: così la vita rinasce ogni giorno.</p>
+    </div>
+    <div class="gallery reveal">
+      <a class="card" href="#">
+        <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/LAVORO-2-scaled-630x430.png" alt="Il lavoro">
+        <div class="cap"><span>Provvidenza</span><h4>Il lavoro come dono</h4></div>
+      </a>
+      <a class="card" href="#">
+        <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/LIBERIA-AFRICA-FOTO-630x430.png" alt="Nel mondo">
+        <div class="cap"><span>Missione</span><h4>Nel mondo</h4></div>
+      </a>
+      <a class="card" href="#">
+        <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/DSC_3160-scaled-630x430.jpg" alt="La nostra giornata">
+        <div class="cap"><span>Ogni giorno</span><h4>La nostra giornata</h4></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STORIE -->
+<section class="stories" id="storie">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">Storie della comunità</span>
+        <h2 class="sec-title">Volti, nomi,<br><span class="it">vite che rinascono.</span></h2>
+      </div>
+      <p>Dietro ogni storia c'è una persona che ha ritrovato se stessa. Ne raccontiamo alcune, perché la speranza si racconta.</p>
+    </div>
+    <div class="stories-grid reveal">
+      <a class="story-card" href="storia-marco.html">
+        <div class="ph">
+          <span class="age">24 anni · Bologna</span>
+          <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/DSC_3160-scaled-630x430.jpg" alt="Marco">
+        </div>
+        <div class="bd">
+          <h3>Marco</h3>
+          <p>"Bastava una mano tesa per ricominciare a vivere."</p>
+          <span class="more">Leggi la storia →</span>
+        </div>
+      </a>
+      <a class="story-card" href="storia-elena.html">
+        <div class="ph">
+          <span class="age">21 anni · Palermo</span>
+          <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/LIBERIA-AFRICA-FOTO-630x430.png" alt="Elena">
+        </div>
+        <div class="bd">
+          <h3>Elena</h3>
+          <p>"Mi sono sentita amata senza dover dimostrare niente."</p>
+          <span class="more">Leggi la storia →</span>
+        </div>
+      </a>
+      <a class="story-card" href="storia-davide.html">
+        <div class="ph">
+          <span class="age">27 anni · Torino</span>
+          <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/MICROPHONE-2-scaled.jpeg" alt="Davide">
+        </div>
+        <div class="bd">
+          <h3>Davide</h3>
+          <p>"La musica mi aveva illuso. Il silenzio mi ha salvato."</p>
+          <span class="more">Leggi la storia →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonianze">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow">Testimonianze</span>
+    </div>
+  </div>
+
+  <div class="marquee" aria-label="Vita che diventa speranza">
+    <div class="marquee-track">
+      <span>Vita che diventa <i>speranza</i><b>·</b></span>
+      <span>Vita che diventa <i>speranza</i><b>·</b></span>
+      <span>Vita che diventa <i>speranza</i><b>·</b></span>
+      <span>Vita che diventa <i>speranza</i><b>·</b></span>
+      <span aria-hidden="true">Vita che diventa <i>speranza</i><b>·</b></span>
+      <span aria-hidden="true">Vita che diventa <i>speranza</i><b>·</b></span>
+      <span aria-hidden="true">Vita che diventa <i>speranza</i><b>·</b></span>
+      <span aria-hidden="true">Vita che diventa <i>speranza</i><b>·</b></span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="testi-grid reveal">
+      <div class="tcard">
+        <div class="quote">"</div>
+        <p>Ringrazio di cuore Madre Elvira perché oggi posso essere qui, parte viva di questa bella storia.</p>
+        <div class="who">
+          <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/Screenshot-2026-05-18-at-09.58.14-126x126.png" alt="Mirko">
+          <span><b>Mirko</b><small>Comunità</small></span>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="quote">"</div>
+        <p>Dopo tanto tempo ho sperimentato l'amore, l'amore di un Dio Padre, un amore pulito e sano, un amore vero.</p>
+        <div class="who">
+          <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/Screenshot-2026-05-18-at-11.09.15-126x126.png" alt="Paula">
+          <span><b>Paula</b><small>Comunità</small></span>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="quote">"</div>
+        <p>La missione è la mia palestra costante nell'amore, partendo ogni giorno dalle piccole cose.</p>
+        <div class="who">
+          <img src="https://www.campodellavita.com/wp-content/uploads/2026/05/Screenshot-2026-05-18-at-14.00.48-126x126.png" alt="Sour Marica">
+          <span><b>Sour Marica</b><small>Consacrata</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="aiutaci">
+  <div class="grid">
+    <div class="panel one reveal">
+      <h3>Hai bisogno di una mano?</h3>
+      <p>Non sei solo. C'è una porta sempre aperta e una vita che ti aspetta per ricominciare.</p>
+      <a href="mailto:campo.della.vita@gmail.com" class="btn-light">Scrivici</a>
+    </div>
+    <div class="panel two reveal">
+      <h3>Vuoi aiutarci?</h3>
+      <p>"Non andiamo al supermercato a fare la spesa": viviamo di Provvidenza. Il tuo dono diventa pane condiviso.</p>
+      <a href="mailto:campo.della.vita@gmail.com" class="btn-light">Sostieni il progetto</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="col">
+        <img class="flogo" src="https://www.campodellavita.com/wp-content/uploads/2025/02/footer-logo-bambini-white.png" alt="Campo della Vita">
+        <p>Provvidenza, Amicizia, Preghiera, Missione, Amore, Verità.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><img src="https://www.campodellavita.com/wp-content/uploads/2026/04/SOCIAL-FACEBOOK-e1776085748590.png" alt="Facebook"></a>
+          <a href="#" aria-label="Instagram"><img src="https://www.campodellavita.com/wp-content/uploads/2026/04/SOCIAL-TRANSPARENT-INSTA-e1776085935301.png" alt="Instagram"></a>
+          <a href="#" aria-label="Youtube"><img src="https://www.campodellavita.com/wp-content/uploads/2026/04/YOUTUBE-SOCIAL-e1776086069332.png" alt="Youtube"></a>
+        </div>
+      </div>
+      <div class="col">
+        <h5>Link utili</h5>
+        <ul>
+          <li><a href="#missione">Chi siamo</a></li>
+          <li><a href="#elvira">Madre Elvira</a></li>
+          <li><a href="#provvidenza">Provvidenza</a></li>
+          <li><a href="#storie">Storie</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>Vieni a trovarci</h5>
+        <ul>
+          <li><a href="#aiutaci">Hai bisogno di una mano?</a></li>
+          <li><a href="#aiutaci">Se vuoi aiutarci</a></li>
+          <li><a href="#storie">Missioni nel mondo</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>Contattaci</h5>
+        <p><a href="mailto:campo.della.vita@gmail.com">campo.della.vita@gmail.com</a></p>
+        <p><a href="tel:+38763027279">+387 63 027 279</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Comunità Cenacolo — Campo della Vita</span>
+      <div class="foot-words"><span>Provvidenza</span><span>Amicizia</span><span>Preghiera</span><span>Missione</span><span>Amore</span><span>Verità</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+// mobile menu
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>menu.classList.toggle('open'));
+menu.addEventListener('click',e=>{if(e.target.tagName==='A')menu.classList.remove('open')});
+// reveal on scroll
+const io=new IntersectionObserver((es)=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// counters
+const counters=document.querySelectorAll('[data-count]');
+const co=new IntersectionObserver((es)=>es.forEach(en=>{
+  if(!en.isIntersecting)return;
+  const el=en.target,target=+el.dataset.count;let cur=0;
+  const step=Math.max(1,Math.ceil(target/60));
+  const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t)}el.textContent=cur},28);
+  co.unobserve(el);
+}),{threshold:.6});
+counters.forEach(c=>co.observe(c));
+</script>
+</body>
+</html>
