@@ -134,67 +134,95 @@
     /* Left: colored boxes */
     .hero-left {
       display: grid;
-      grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
+      grid-template-rows: 42% 58%;
       border-right: 1px solid var(--linea);
     }
 
-    .hero-box {
-      position: relative;
-      overflow: hidden;
-      min-height: 200px;
-    }
-
-    .hero-box:nth-child(1) {
-      background: linear-gradient(135deg, #c45a28 0%, #e07840 100%);
+    /* Top-left: dark empty */
+    .hero-box-dark {
+      background: var(--nero);
       grid-column: 1 / 2;
       grid-row: 1 / 2;
+      border-right: 1px solid var(--linea);
+      border-bottom: 1px solid var(--linea);
     }
 
-    .hero-box:nth-child(2) {
-      background: linear-gradient(135deg, #2a5e38 0%, #3d7a50 100%);
+    /* Top-right: orange gradient */
+    .hero-box-orange {
+      background: linear-gradient(160deg, #c85020 0%, #e8723a 50%, #c06030 100%);
       grid-column: 2 / 3;
       grid-row: 1 / 2;
-      border-left: 1px solid rgba(0,0,0,0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.2);
     }
 
-    .hero-box:nth-child(3) {
-      background: linear-gradient(135deg, #7a4820 0%, #9a5e30 100%);
-      grid-column: 1 / 3;
+    /* Bottom-left: white app card */
+    .hero-box-card {
+      grid-column: 1 / 2;
       grid-row: 2 / 3;
-      border-top: 1px solid rgba(0,0,0,0.15);
-      display: flex;
-      align-items: flex-end;
-      padding: 2rem;
-    }
-
-    .hero-box-inner {
+      background: #f0ede6;
+      border-right: 1px solid var(--linea);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100%;
-      padding: 2rem;
+      padding: 1.8rem 1.5rem 1.5rem;
     }
 
-    .hero-box-tag {
-      font-size: 0.6rem;
+    .hero-card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .hero-card-tag {
+      font-size: 0.55rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(247,245,240,0.5);
+      color: #999;
     }
 
-    .hero-box-icon {
-      font-size: 2rem;
-      color: rgba(247,245,240,0.25);
-      line-height: 1;
+    .hero-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--arancio);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-top: 0.5rem;
     }
 
-    .hero-box3-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(247,245,240,0.45);
+    .hero-card-nome {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--nero);
+      line-height: 1.2;
+      margin-top: 0.5rem;
+    }
+
+    .hero-card-bottom {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-card-arrow {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: #3a7bd5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* Bottom-right: green gradient */
+    .hero-box-green {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      background: linear-gradient(160deg, #1e4a2a 0%, #2d6040 60%, #1a3822 100%);
     }
 
     /* Right: text */
@@ -761,21 +789,23 @@
     <div class="hero-main">
       <!-- Left: colored blocks -->
       <div class="hero-left">
-        <div class="hero-box">
-          <div class="hero-box-inner">
-            <span class="hero-box-tag">Comunità</span>
-            <span class="hero-box-icon">⌂</span>
+        <!-- top-left: dark empty -->
+        <div class="hero-box-dark"></div>
+        <!-- top-right: orange gradient -->
+        <div class="hero-box-orange"></div>
+        <!-- bottom-left: white app card -->
+        <div class="hero-box-card">
+          <div class="hero-card-top">
+            <span class="hero-card-tag">campodellavita.org</span>
+            <div class="hero-card-icon">⌂</div>
+            <div class="hero-card-nome">Campo<br>della Vita</div>
+          </div>
+          <div class="hero-card-bottom">
+            <div class="hero-card-arrow">›</div>
           </div>
         </div>
-        <div class="hero-box">
-          <div class="hero-box-inner">
-            <span class="hero-box-tag">Percorso</span>
-            <span class="hero-box-icon">↗</span>
-          </div>
-        </div>
-        <div class="hero-box">
-          <span class="hero-box3-label">campodellavita.org · @campodellavita</span>
-        </div>
+        <!-- bottom-right: green gradient -->
+        <div class="hero-box-green"></div>
       </div>
       <!-- Right: text -->
       <div class="hero-right">
