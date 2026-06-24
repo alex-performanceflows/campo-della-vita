@@ -105,7 +105,7 @@
     .hero-strip {
       background: var(--nero2);
       border-bottom: 1px solid var(--linea);
-      padding: 0.85rem 2.5rem;
+      padding: 0.8rem 2.5rem;
       display: flex;
       align-items: center;
       gap: 0.7rem;
@@ -125,80 +125,83 @@
       color: rgba(247,245,240,0.4);
     }
 
+    /* Gallery row: 3 colored boxes side by side */
+    .hero-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      height: 220px;
+      border-bottom: 1px solid rgba(0,0,0,0.25);
+    }
+
+    .gallery-box {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-box + .gallery-box {
+      border-left: 2px solid var(--nero);
+    }
+
+    .gallery-box-orange {
+      background: linear-gradient(135deg, #b84010 0%, #d86030 40%, #c05028 100%);
+    }
+
+    .gallery-box-green {
+      background: linear-gradient(135deg, #1a4020 0%, #2a5832 60%, #1e4828 100%);
+    }
+
+    .gallery-box-sienna {
+      background: linear-gradient(135deg, #6a3810 0%, #8a5228 50%, #704018 100%);
+    }
+
+    /* Main hero: card + text */
     .hero-main {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - 52px - 42px);
+      min-height: 360px;
     }
 
-    /* Left: colored boxes */
-    .hero-left {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 42% 58%;
-      border-right: 1px solid var(--linea);
-    }
-
-    /* Top-left: dark empty */
-    .hero-box-dark {
-      background: var(--nero);
-      grid-column: 1 / 2;
-      grid-row: 1 / 2;
-      border-right: 1px solid var(--linea);
-      border-bottom: 1px solid var(--linea);
-    }
-
-    /* Top-right: orange gradient */
-    .hero-box-orange {
-      background: linear-gradient(160deg, #c85020 0%, #e8723a 50%, #c06030 100%);
-      grid-column: 2 / 3;
-      grid-row: 1 / 2;
-      border-bottom: 1px solid rgba(0,0,0,0.2);
-    }
-
-    /* Bottom-left: white app card */
-    .hero-box-card {
-      grid-column: 1 / 2;
-      grid-row: 2 / 3;
-      background: #f0ede6;
+    /* Left: white app card */
+    .hero-card {
+      background: #eeebe3;
       border-right: 1px solid var(--linea);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 1.8rem 1.5rem 1.5rem;
+      padding: 2.2rem 2rem 2rem;
     }
 
     .hero-card-top {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .hero-card-tag {
       font-size: 0.55rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #999;
+      color: #aaa;
     }
 
     .hero-card-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
+      width: 48px; height: 48px;
+      border-radius: 12px;
       background: var(--arancio);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: #fff;
-      margin-top: 0.5rem;
+      margin-top: 0.8rem;
     }
 
     .hero-card-nome {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 700;
-      color: var(--nero);
+      color: #1a1a18;
       line-height: 1.2;
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
     }
 
     .hero-card-bottom {
@@ -207,22 +210,15 @@
     }
 
     .hero-card-arrow {
-      width: 34px; height: 34px;
+      width: 36px; height: 36px;
       border-radius: 50%;
       background: #3a7bd5;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-    }
-
-    /* Bottom-right: green gradient */
-    .hero-box-green {
-      grid-column: 2 / 3;
-      grid-row: 2 / 3;
-      background: linear-gradient(160deg, #1e4a2a 0%, #2d6040 60%, #1a3822 100%);
     }
 
     /* Right: text */
@@ -734,9 +730,9 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
 
+      .hero-gallery { height: 140px; }
       .hero-main { grid-template-columns: 1fr; }
-      .hero-left { min-height: 50vw; }
-      .hero-box { min-height: 120px; }
+      .hero-card { min-height: 200px; border-right: none; border-bottom: 1px solid var(--linea); }
       .hero-right { padding: 3.5rem 1.5rem; }
 
       .alive-section { grid-template-columns: 1fr; }
@@ -786,26 +782,26 @@
       <div class="hero-strip-dot"></div>
       <span class="hero-strip-text">Campo della Vita · Fondata nel 1983</span>
     </div>
+
+    <!-- Gallery: 3 colored boxes in a row -->
+    <div class="hero-gallery">
+      <div class="gallery-box gallery-box-orange"></div>
+      <div class="gallery-box gallery-box-green"></div>
+      <div class="gallery-box gallery-box-sienna"></div>
+    </div>
+
+    <!-- Main: card + headline -->
     <div class="hero-main">
-      <!-- Left: colored blocks -->
-      <div class="hero-left">
-        <!-- top-left: dark empty -->
-        <div class="hero-box-dark"></div>
-        <!-- top-right: orange gradient -->
-        <div class="hero-box-orange"></div>
-        <!-- bottom-left: white app card -->
-        <div class="hero-box-card">
-          <div class="hero-card-top">
-            <span class="hero-card-tag">campodellavita.org</span>
-            <div class="hero-card-icon">⌂</div>
-            <div class="hero-card-nome">Campo<br>della Vita</div>
-          </div>
-          <div class="hero-card-bottom">
-            <div class="hero-card-arrow">›</div>
-          </div>
+      <!-- Left: white app card -->
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <span class="hero-card-tag">campodellavita.org · @campodellavita</span>
+          <div class="hero-card-icon">⌂</div>
+          <div class="hero-card-nome">Campo<br>della Vita</div>
         </div>
-        <!-- bottom-right: green gradient -->
-        <div class="hero-box-green"></div>
+        <div class="hero-card-bottom">
+          <div class="hero-card-arrow">›</div>
+        </div>
       </div>
       <!-- Right: text -->
       <div class="hero-right">
